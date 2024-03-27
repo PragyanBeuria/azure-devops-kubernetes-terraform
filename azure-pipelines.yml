@@ -22,7 +22,7 @@ stages:
         Contents: '**/*.yaml'
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
-    - bash: java -version
+    - bash: java --version
     - bash: node --version
     - bash: python --version 
-    - bash: mvn -version 
+    - bash: mvn --version 
