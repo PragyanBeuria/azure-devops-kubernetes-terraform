@@ -18,12 +18,14 @@ stages:
   - job: Build
     displayName: Build
     pool:
-      mypool1
+      name: mypool1  # Specify the name property for the agent pool
     steps:
     - task: Docker@2
-      displayName: Build an image
+      displayName: Build and push Docker image
       inputs:
-        command: build
-        dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-        tags: |
-          $(tag)
+        containerRegistry: 'docker-24'
+        repository: 'pragyan2023/docker-24'
+        command: 'buildAndPush'
+        Dockerfile: '**/Dockerfile'
+
+
