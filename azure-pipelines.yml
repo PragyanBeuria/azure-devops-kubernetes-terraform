@@ -2,7 +2,7 @@ trigger:
 - main
 
 pool:
-  POOLA
+  mypool1
 
 stages:
 - stage: Build
