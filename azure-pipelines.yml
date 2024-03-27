@@ -3,32 +3,66 @@ trigger:
 
 pool:
   name: poolA
-# Pipelines > Stages > Jobs > Tasks(Steps)
 
-jobs:
-- job: Job1
+stages:
+- stage: Build
+  jobs:
+  - job: FirstJob
+    steps:
+    - bash: echo Build FirstJob
+    - bash: echo $(PipelineLevelVariable)
+    - bash: echo $(Build.BuildNumber)
+    - bash: echo $(Build.BuildId)
+    - bash: echo $(Build.SourceBranchName)
+    - bash: echo $(Build.SourcesDirectory)
+    - bash: echo $(System.DefaultWorkingDirectory)
+    - bash: ls -R $(System.DefaultWorkingDirectory)
+    - bash: echo $(Build.ArtifactStagingDirectory)
+    - bash: java -version
+    - bash: node --version
+    - bash: python --version 
+    - bash: mvn -version 
+    - bash: ls -R $(Build.ArtifactStagingDirectory)
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(System.DefaultWorkingDirectory)'
+        Contents: |
+          **/*.yaml
+          **/*.tf
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    - bash: ls -R $(Build.ArtifactStagingDirectory)
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
+- job: SecondJob
   steps:
-  - script: echo Job1 - Hello, world, changed!
-    displayName: 'Run a one-line script'
-  - script: |
-      echo Add other tasks to build, test, and deploy your project.
-      echo See https://aka.ms/yaml
-      echo more information
-    displayName: 'Run a multi-line script'
-- job: Job2
-  dependsOn: Job1
-  steps:
-  - script: echo Job2!
-    displayName: 'Run a one-line script'
-- job: Job3
-  dependsOn: Job1
-  steps:
-  - script: echo Job3!
-    displayName: 'Run a one-line script'
-- job: Job4
+  - bash: echo Build SecondJob
+
+- stage: DevDeploy
+  variables:
+    environment: Dev
+  dependsOn: Build
+  jobs:
+  - job: DevDeployJob
+    steps:
+    - bash: echo $(environment)DeployJob
+
+- stage: QADeploy
+  variables:
+    environment: QA
+  dependsOn: Build
+  jobs:
+  - job: QADeployJob
+    steps:
+    - bash: echo $(environment)DeployJob
+
+- stage: ProdDeploy
   dependsOn: 
-  - Job2
-  - Job3
-  steps:
-  - script: echo Job3!
-    displayName: 'Run a one-line script'
+  - DevDeploy
+  - QADeploy
+  jobs:
+  - job: ProdDeployJob
+    steps:
+    - bash: echo ProdDeployJob
