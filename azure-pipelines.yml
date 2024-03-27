@@ -22,6 +22,8 @@ stages:
         SourceFolder: '$(System.DefaultWorkingDirectory)'
         Contents: '**/*.yaml'
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    - bash: ls -R $(System.DefaultWorkingDirectory)
+
     - bash: java -version
     - bash: node --version
     - bash: python --version 
