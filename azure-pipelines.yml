@@ -28,7 +28,7 @@ steps:
     ensureBackend: true
     backendAzureRmResourceGroupName: 'mygsource'
     backendAzureRmResourceGroupLocation: 'northeurope'
-    backendAzureRmStorageAccountName: 'prags@93'
-    backendAzureRmContainerName: 'prags@93container'
+    backendAzureRmStorageAccountName: 'prags93'
+    backendAzureRmContainerName: 'prags93container'
     backendAzureRmKey: 'terra-devops.tfstate'
     allowTelemetryCollection: true
