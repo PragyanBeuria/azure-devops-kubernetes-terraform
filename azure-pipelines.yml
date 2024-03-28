@@ -1,15 +1,35 @@
 # Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+steps:
+  - task: DownloadSecureFile@1  # Download the public key
+    name: publickey
+    displayName: 'Download Secure File'
+    inputs:
+      secureFile: 'azure_rsa.pub'
+
+  - task: TerraformCLI@2  # Initialize Terraform
+    name: terraform_init 
+    inputs:
+      command: 'init'
+      workingDirectory: '$(System.DefaultWorkingDirectory)//configuration/iaac/azure/kubernetes'
+      commandOptions: '-var client_id=$(client_id) -var client_secret="$(client_secret)" -var ssh_public_key="$(publickey.secureFilePath)"'  
+      backendType: 'azurerm'  
+      backendServiceArm: 'service-terra-connection'
+      backendAzureRmTenantId: '352962f9-1e3b-435e-a99b-2afe78acad69'
+      backendAzureRmSubscriptionId: '3cd1cc07-05ab-4763-b8f9-d92482d09c44'
+      ensureBackend: true
+      backendAzureRmResourceGroupName: 'terraform-azure-rg'
+      backendAzureRmResourceGroupLocation: 'westeurope'
+      backendAzureRmStorageAccountName: 'pragyan@2024'
+      backendAzureRmContainerName: 'pragyan@2024container'
+      backendAzureRmKey: 'tearraform-dev.tfstate'
+      allowTelemetryCollection: true
 
 trigger:
 - main
 
 pool:
-  pool-terra
+  pool-terra  # Name your pool for better organization and management
 
-steps:
 - script: echo k8s!
   displayName: 'Run a one-line script'
 
