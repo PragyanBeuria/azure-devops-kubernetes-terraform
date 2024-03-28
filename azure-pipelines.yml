@@ -29,7 +29,7 @@ steps:
     ensureBackend: true
     backendAzureRmResourceGroupName: 'terra-rg'
     backendAzureRmResourceGroupLocation: 'westeurope'
-    backendAzureRmStorageAccountName: 'pragyan@25'
+    backendAzureRmStorageAccountName: 'pragyan25'
     backendAzureRmContainerName: 'pragyan@25container'
     backendAzureRmKey: 'terraf-dev.tfstate'
     allowTelemetryCollection: true
