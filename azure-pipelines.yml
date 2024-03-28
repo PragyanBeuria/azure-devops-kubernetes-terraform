@@ -23,13 +23,13 @@ steps:
     workingDirectory: '$(System.DefaultWorkingDirectory)//configuration/iaac/azure/kubernetes'
     commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
     backendType: 'azurerm'
-    backendServiceArm: 'Pay-As-You-Go-NEW Subscrpition(2)(3cd1cc07-05ab-4763-b8f9-d92482d09c44)'
+    backendServiceArm: 'Pay-As-You-Go-NEW Subscrpition(1)(3cd1cc07-05ab-4763-b8f9-d92482d09c44)'
     backendAzureRmTenantId: '352962f9-1e3b-435e-a99b-2afe78acad69'
     backendAzureRmSubscriptionId: '3cd1cc07-05ab-4763-b8f9-d92482d09c44'
     ensureBackend: true
-    backendAzureRmResourceGroupName: 'terra-rg'
+    backendAzureRmResourceGroupName: 'terra-rgp'
     backendAzureRmResourceGroupLocation: 'westeurope'
-    backendAzureRmStorageAccountName: 'pragyan25'
+    backendAzureRmStorageAccountName: 'pragyan256'
     backendAzureRmContainerName: 'pragyan@25container'
     backendAzureRmKey: 'terraf-dev.tfstate'
     allowTelemetryCollection: true
