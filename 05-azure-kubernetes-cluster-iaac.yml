@@ -1,0 +1,34 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  pool-terra
+
+steps:
+- script: echo k8s!
+- task: TerraformCLI@2
+  inputs:
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure/kubernetes'
+    backendType: 'azurerm'
+    backendServiceArm: 'service-terra'
+    backendAzureRmTenantId: '352962f9-1e3b-435e-a99b-2afe78acad69'
+    backendAzureRmSubscriptionId: '3cd1cc07-05ab-4763-b8f9-d92482d09c44'
+    ensureBackend: true
+    backendAzureRmResourceGroupName: 'terraform-backend-resource'
+    backendAzureRmResourceGroupLocation: 'Central India'
+    backendAzureRmStorageAccountName: 'stoargeprags24'
+    backendAzureRmContainerName: 'storagepargs'
+    backendAzureRmKey: 'kubernetes-frv.tfstate'
+    allowTelemetryCollection: true
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
