@@ -12,10 +12,7 @@ steps:
   name: publickey
   inputs:
     secureFile: 'newazure_rsa.pub'
-- task: TerraformCLI@2
-  inputs:
-    command: 'init'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure/kubernetes'
+
 - task: TerraformCLI@2
   inputs:
     command: 'init'
