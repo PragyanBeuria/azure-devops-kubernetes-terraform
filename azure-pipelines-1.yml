@@ -10,7 +10,7 @@ steps:
 
 
 - task: DownloadSecureFile@1
-  name: 
+  name: publickey
   inputs:
     secureFile: 'myazure_rsa.pub'
 - task: TerraformCLI@2
