@@ -1,19 +1,16 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - main
 
 pool:
   Default
+
 steps:
 - script: echo  create k8snew!
+
 - task: DownloadSecureFile@1
   inputs:
-  name:publickey
-  secureFile: 'myazure_rsa.pub'
+    name: publickey
+    secureFile: 'myazure_rsa.pub'
 
 - task: TerraformCLI@2
   inputs:
@@ -32,4 +29,3 @@ steps:
     backendAzureRmKey: 'terrakey-dev.tfstate'
     allowTelemetryCollection: true
   displayName: 'Run a one-line script'
-
