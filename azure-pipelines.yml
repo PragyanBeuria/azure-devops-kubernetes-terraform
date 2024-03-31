@@ -1,0 +1,40 @@
+trigger:
+- main
+
+pool:
+    Default
+
+steps:
+- script: |
+    echo "Creating Kubernetes cluster"
+  displayName: 'Echo: Create Kubernetes Cluster'
+
+- task: DownloadSecureFile@1
+  inputs:
+    secureFile: 'myazure_rsa.pub'
+
+- task: TerraformCLI@2
+  displayName: 'Terraform Init'
+  inputs:
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure/kubernetes'
+    commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
+    backendType: 'azurerm'
+    backendServiceArm: 'terra-service-cluster'
+    backendAzureRmTenantId: '352962f9-1e3b-435e-a99b-2afe78acad69'
+    backendAzureRmSubscriptionId: '3cd1cc07-05ab-4763-b8f9-d92482d09c44'
+    ensureBackend: true
+    backendAzureRmResourceGroupName: 'terra-kubernetes-pipeline'
+    backendAzureRmResourceGroupLocation: 'northeurope'
+    backendAzureRmStorageAccountName: 'myprags2025'
+    backendAzureRmContainerName: 'myprags2025container'
+    backendAzureRmKey: 'terrakey-dev.tfstate'
+    allowTelemetryCollection: true
+
+- task: TerraformCLI@2
+  displayName: 'Terraform Apply'
+  inputs:
+    command: 'apply'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure/kubernetes'
+    commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
+    allowTelemetryCollection: true
