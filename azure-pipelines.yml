@@ -2,7 +2,7 @@ trigger:
 - main
 
 pool:
-    Default
+  Default
 
 steps:
 - script: |
@@ -11,6 +11,7 @@ steps:
 
 - task: DownloadSecureFile@1
   inputs:
+    name: publickey
     secureFile: 'myazure_rsa.pub'
 
 - task: TerraformCLI@2
@@ -30,13 +31,6 @@ steps:
     backendAzureRmContainerName: 'myprags2025container'
     backendAzureRmKey: 'terrakey-dev.tfstate'
     allowTelemetryCollection: true
-
-- task: TerraformCLI@2
-  displayName: 'Terraform Apply'
-  inputs:
-    command: 'apply'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure/kubernetes'
-    commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
 
 - task: TerraformCLI@2
   inputs:
