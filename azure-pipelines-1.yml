@@ -9,10 +9,8 @@ steps:
   displayName: 'Run a one-line script'
 
 - task: DownloadSecureFile@1
-  name: publickey
   inputs:
     secureFile: 'newazure_rsa.pub'
-
 - task: TerraformCLI@2
   inputs:
     command: 'init'
