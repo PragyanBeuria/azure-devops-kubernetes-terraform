@@ -7,7 +7,6 @@ pool:
 steps:
 - script: |
     echo "Creating Kubernetes cluster"
-    # Placeholder script, can be removed or replaced with actual commands
   displayName: 'Echo: Create Kubernetes Cluster'
 
 - task: DownloadSecureFile@1
