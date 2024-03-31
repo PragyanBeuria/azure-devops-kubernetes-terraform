@@ -19,6 +19,7 @@ steps:
   inputs:
     command: 'init'
     workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure/kubernetes'
+    secureVarsFile: 'myazure_rsa.pub'
     commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
     backendType: 'azurerm'
     backendServiceArm: 'terra-service-cluster'
