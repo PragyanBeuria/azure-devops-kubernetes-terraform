@@ -10,7 +10,7 @@ steps:
 
 - task: DownloadSecureFile@1
   inputs:
-    secureFile: 'newazure_rsa.pub'
+    secureFile: 'id_rsa.pub'
 - task: TerraformCLI@2
   inputs:
     command: 'init'
@@ -32,6 +32,6 @@ steps:
   inputs:
     command: 'apply'
     workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure/kubernetes'
-    secureVarsFile: 'newazure_rsa.pub'
+    secureVarsFile: 'id_rsa.pub'
     commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
     allowTelemetryCollection: true
