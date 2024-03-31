@@ -32,4 +32,3 @@ steps:
   inputs:
     command: 'apply'
     workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure/kubernetes'
-    secureVarsFile: 'id_rsa.pub'
