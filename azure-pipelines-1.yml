@@ -11,11 +11,12 @@ steps:
 - task: DownloadSecureFile@1
   name: publickey
   inputs:
-    secureFile: 'myazure_rsa.pub'
+    secureFile: 'newazure_rsa.pub'
 - task: TerraformCLI@2
   inputs:
     command: 'init'
     workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure/kubernetes'
+    
     backendType: 'azurerm'
     backendServiceArm: 'terra-service-cluster'
     backendAzureRmTenantId: '352962f9-1e3b-435e-a99b-2afe78acad69'
