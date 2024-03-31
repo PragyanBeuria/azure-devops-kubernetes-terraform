@@ -10,6 +10,10 @@ pool:
   Default
 steps:
 - script: echo  create k8snew!
+- task: DownloadSecureFile@1
+  inputs:
+  name:publickey
+  secureFile: 'myazure_rsa.pub'
 
 - task: TerraformCLI@2
   inputs:
