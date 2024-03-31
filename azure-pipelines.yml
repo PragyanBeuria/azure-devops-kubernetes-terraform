@@ -10,6 +10,7 @@ pool:
   Default
 steps:
 - script: echo  create k8snew!
+
 - task: TerraformCLI@2
   inputs:
     command: 'init'
