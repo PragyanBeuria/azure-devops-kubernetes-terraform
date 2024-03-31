@@ -1,0 +1,30 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  Default
+steps:
+- script: echo  create k8snew!
+- task: TerraformCLI@2
+  inputs:
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)//configuration/iaac/azure/kubernetes'
+    commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
+    backendType: 'azurerm'
+    backendServiceArm: 'Pay-As-You-Go-NEW Subscrpition (3cd1cc07-05ab-4763-b8f9-d92482d09c44)'
+    backendAzureRmTenantId: '352962f9-1e3b-435e-a99b-2afe78acad69'
+    backendAzureRmSubscriptionId: '3cd1cc07-05ab-4763-b8f9-d92482d09c44'
+    ensureBackend: true
+    backendAzureRmResourceGroupName: 'terra-kubernetes-pipeline'
+    backendAzureRmResourceGroupLocation: 'northeurope'
+    backendAzureRmStorageAccountName: 'myprags2025'
+    backendAzureRmContainerName: 'myprags2025container'
+    backendAzureRmKey: 'terrakey-dev.tfstate'
+    allowTelemetryCollection: true
+  displayName: 'Run a one-line script'
+
