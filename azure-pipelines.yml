@@ -25,6 +25,9 @@ steps:
     backendAzureRmResourceGroupName: 'mygsource'
     backendAzureRmResourceGroupLocation: 'northeurope'
     backendAzureRmStorageAccountName: 'prags93'
+    backendAzureRmContainerName: 'prags93container'
+    backendAzureRmKey: 'terra-dev.tfstate'
+    allowTelemetryCollection: true
 
 - task: TerraformCLI@2
   inputs:
