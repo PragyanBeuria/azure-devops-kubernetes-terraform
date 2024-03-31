@@ -15,7 +15,7 @@ steps:
 - task: TerraformCLI@2
   inputs:
     command: 'init'
-    workingDirectory: '$(System.DefaultWorkingDirectory)//configuration/iaac/azure/kubernetes'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure/kubernetes'
     commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
     backendType: 'azurerm'
     backendServiceArm: 'Pay-As-You-Go-NEW Subscrpition (3cd1cc07-05ab-4763-b8f9-d92482d09c44)'
