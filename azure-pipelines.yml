@@ -31,7 +31,7 @@ steps:
     backendAzureRmStorageAccountName: 'myprags2025'
     backendAzureRmContainerName: 'myprags2025container'
     backendAzureRmKey: 'terrakey-dev.tfstate'
-    allowTelemetryCollection: true
+    allowTelemetryCollection: false
 
 - task: TerraformCLI@2
   inputs:
