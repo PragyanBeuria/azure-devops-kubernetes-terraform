@@ -18,7 +18,7 @@ resource "azurerm_kubernetes_cluster" "terraform-k8s" {
     admin_username = "ubuntu"
 
     ssh_key {
-      key_data = file(var.ssh_public_key)
+      key_data = file("${path.module}/${var.ssh_public_key_path}")
     }
   }
 
