@@ -8,12 +8,8 @@ steps:
 - script: echo k8s!
   displayName: 'Run a one-line script'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
 - task: DownloadSecureFile@1
-  name: 
+  name: publickey
   inputs:
     secureFile: 'myazure_rsa.pub'
 - task: TerraformCLI@2
