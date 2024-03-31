@@ -2,7 +2,7 @@ trigger:
 - main
 
 pool:
-  pool-terra
+  Default
 
 steps:
 - script: echo k8s!
