@@ -10,9 +10,9 @@ steps:
   displayName: 'Echo: Create Kubernetes Cluster'
 
 - task: DownloadSecureFile@1
+  name: publickey
   inputs:
-    name: publickey
-    secureFile: 'myazure_rsa.pub'
+    secureFile: 'myazure_rsa.hub'
 
 - task: TerraformCLI@2
   displayName: 'Terraform Init'
