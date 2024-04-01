@@ -28,7 +28,7 @@ steps:
     backendAzureRmTenantId: '352962f9-1e3b-435e-a99b-2afe78acad69'
     backendAzureRmSubscriptionId: '3cd1cc07-05ab-4763-b8f9-d92482d09c44'
     ensureBackend: true
-    backendAzureRmResourceGroupName: 'terra-kubernetes-pipeline'
+    backendAzureRmResourceGroupName: 'terra-kubernetes-pipeline02'
     backendAzureRmResourceGroupLocation: 'westeurope'
     backendAzureRmStorageAccountName: 'myprags26'
     backendAzureRmContainerName: 'myprags2026container'
