@@ -15,7 +15,7 @@ steps:
 - task: DownloadSecureFile@1
   inputs:
     name: publickey
-    secureFile: 'newazure_rsa.pub'
+    secureFile: 'id_rsa.pub'
 
 - task: TerraformCLI@2
   displayName: 'Terraform Init'
