@@ -32,7 +32,6 @@ resource "azurerm_kubernetes_cluster" "terraform-k8s" {
   service_principal {
     client_id     = var.client_id
     client_secret = var.client_secret
-    ssh_public_key =var.ssh_public_key
   }
 
   tags = {
