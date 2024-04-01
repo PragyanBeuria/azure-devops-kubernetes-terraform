@@ -8,11 +8,6 @@ provider "azurerm" {
   features {}
 }
 
-variable "ssh_public_key" {
-  description = "SSH public key used for cluster access"
-  type        = string
-}
-
 resource "azurerm_kubernetes_cluster" "terraform-k8s" {
   name                = "${var.cluster_name}_${var.environment}"
   location            = azurerm_resource_group.resource_group.location
