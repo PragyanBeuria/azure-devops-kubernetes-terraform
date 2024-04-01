@@ -8,7 +8,12 @@ pool:
 steps:
 - script: echo k8s!
   displayName: 'Run a one-line script'
-
+- task: InstallSSHKey@0
+  inputs:
+    knownHostsEntry: 'InstallSSHKey@0'
+    sshPublicKey: 'InstallSSHKey'
+    sshPassphrase: '$(known_host)'
+    sshKeySecureFile: '$(ssh_public_key)'
 - task: DownloadSecureFile@1
   inputs:
     name: publickey
