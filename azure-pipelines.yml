@@ -16,10 +16,7 @@ steps:
   inputs:
     name: publickey
     secureFile: id_rsa.pub
-- script: |
-    echo "Contents of the SSH Public Key File:"
-    cat $(publickey.secureFilePath)
-  displayName: 'Debug: Print SSH Public Key Contents'
+
 - task: TerraformCLI@2
   displayName: 'Terraform Init'
   inputs:
