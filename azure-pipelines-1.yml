@@ -33,8 +33,9 @@ steps:
 
 - script: |
     echo "Copying SSH public key to Terraform working directory"
-    cp $(publickey.secureFilePath) $(System.DefaultWorkingDirectory)/configuration/iaac/azure/kubernetes/id_rsa.pub
+    copy "$(publickey.secureFilePath)" "$(System.DefaultWorkingDirectory)\configuration\iaac\azure\kubernetes\id_rsa.pub"
   displayName: 'Copy SSH public key'
+
 
 - task: TerraformCLI@2
   inputs:
