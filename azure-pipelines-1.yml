@@ -31,11 +31,11 @@ steps:
     backendAzureRmKey: 'terraf-devops.tfstate'
     allowTelemetryCollection: true
 
+
 - script: |
     echo "Copying SSH public key to Terraform working directory"
-    copy "$(publickey.secureFilePath)" "$(System.DefaultWorkingDirectory)\configuration\iaac\azure\kubernetes\id_rsa.pub"
+    copy "$(Agent.TempDirectory)\$(publickey.secureFile)" "$(System.DefaultWorkingDirectory)\configuration\iaac\azure\kubernetes\id_rsa.pub"
   displayName: 'Copy SSH public key'
-
 
 - task: TerraformCLI@2
   inputs:
