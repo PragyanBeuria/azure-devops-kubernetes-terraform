@@ -28,10 +28,10 @@ steps:
     backendAzureRmTenantId: '352962f9-1e3b-435e-a99b-2afe78acad69'
     backendAzureRmSubscriptionId: '3cd1cc07-05ab-4763-b8f9-d92482d09c44'
     ensureBackend: true
-    backendAzureRmResourceGroupName: 'terra-kubernetes-pipeline'
+    backendAzureRmResourceGroupName: 'terra-kubernetes-pipeline92'
     backendAzureRmResourceGroupLocation: 'westeurope'
-    backendAzureRmStorageAccountName: 'myprags2025'
-    backendAzureRmContainerName: 'myprags2025container'
-    backendAzureRmKey: 'terrakey-dev.tfstate'
+    backendAzureRmStorageAccountName: 'myprags92'
+    backendAzureRmContainerName: 'myprags92container'
+    backendAzureRmKey: 'terrakeyfile-dev.tfstate'
     allowTelemetryCollection: true
 
