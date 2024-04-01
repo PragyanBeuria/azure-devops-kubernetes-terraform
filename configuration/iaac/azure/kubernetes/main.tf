@@ -15,7 +15,7 @@ resource "azurerm_kubernetes_cluster" "terraform-k8s" {
   dns_prefix          = var.dns_prefix
 
   linux_profile {
-    admin_username = "ubuntu"
+    admin_username = "newuser"
 
 ssh_key {
       key_data = var.ssh_public_key
