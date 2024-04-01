@@ -38,7 +38,6 @@ ssh_key {
     Environment = var.environment
   }
 }
-
 terraform {
   backend "azurerm" {
     # storage_account_name="<<storage_account_name>>" #OVERRIDE in TERRAFORM init
