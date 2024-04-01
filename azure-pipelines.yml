@@ -30,9 +30,9 @@ steps:
     ensureBackend: true
     backendAzureRmResourceGroupName: 'terra-kubernetes-pipeline'
     backendAzureRmResourceGroupLocation: 'westeurope'
-    backendAzureRmStorageAccountName: 'myprags2025'
-    backendAzureRmContainerName: 'myprags2025container'
-    backendAzureRmKey: 'terrakey-dev.tfstate'
+    backendAzureRmStorageAccountName: 'myprags26'
+    backendAzureRmContainerName: 'myprags2026container'
+    backendAzureRmKey: 'terraformkey-dev.tfstate'
     allowTelemetryCollection: true
 
 - task: TerraformCLI@2
